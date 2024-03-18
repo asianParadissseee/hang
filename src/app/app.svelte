@@ -1,7 +1,8 @@
 <script>
-  import AppButton from "@atoms/app-button.svelte"
+  import Router from "svelte-spa-router";
+  import {routes} from "@app/router/router";
 </script>
 
-<AppButton>
-  hello
-</AppButton>
+<body>
+  <Router  {routes}/>
+</body>

@@ -1,6 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import {defineNuxtConfig} from "nuxt/config";
+import {resolve} from "node:url";
 
 export default defineNuxtConfig({
-  devtools: { enabled: true }
+  devtools: { enabled: true },
+  alias: {
+    "@": resolve(__dirname, "/")
+  }
 })

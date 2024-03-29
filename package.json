@@ -1,18 +1,17 @@
 {
-  "name": "my-project",
+  "name": "nuxt-app",
   "private": true,
-  "version": "1.0.0",
+  "type": "module",
   "scripts": {
-    "dev": "rsbuild dev --open",
-    "build": "rsbuild build",
-    "preview": "rsbuild preview"
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "vue": "^3.4.19"
-  },
-  "devDependencies": {
-    "@rsbuild/core": "^0.5.4",
-    "@rsbuild/plugin-vue": "^0.5.4",
-    "typescript": "^5.4.2"
+    "nuxt": "^3.11.1",
+    "vue": "^3.4.21",
+    "vue-router": "^4.3.0"
   }
 }

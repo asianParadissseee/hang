@@ -1,13 +1,24 @@
-# Local
-.DS_Store
-*.local
-*.log*
+# Nuxt dev/build outputs
+.output
+.data
+.nuxt
+.nitro
+.cache
+dist
 
-# Dist
+# Node dependencies
 node_modules
-dist/
 
-# IDE
-my-project/.vscode/extensions.json
-!.vscode/extensions.json
+# Logs
+logs
+*.log
+
+# Misc
+.DS_Store
+.fleet
 .idea
+
+# Local env files
+.env
+.env.*
+!.env.example

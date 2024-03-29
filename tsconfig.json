@@ -1,18 +1,4 @@
 {
-  "compilerOptions": {
-    "target": "ES2020",
-    "lib": ["DOM", "ES2020"],
-    "module": "ESNext",
-    "jsx": "preserve",
-    "jsxImportSource": "vue",
-    "strict": true,
-    "skipLibCheck": true,
-    "isolatedModules": true,
-    "resolveJsonModule": true,
-    "moduleResolution": "bundler",
-    "useDefineForClassFields": true
-  },
-  "include": [
-    "src"
-  ]
+  // https://nuxt.com/docs/guide/concepts/typescript
+  "extends": ".nuxt/tsconfig.json"
 }

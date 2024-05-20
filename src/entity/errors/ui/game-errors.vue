@@ -13,7 +13,7 @@ const {wrongLetters} = defineProps<GameErrorProps>()
     <div>
       <p>Ошибки</p>
       <span v-for="(letter,id) in wrongLetters" :key="id">
-  {{ id + 1 === wrongLetters.length -1 ? letter : `${letter}, `}}
+  {{ id + 1 === wrongLetters.length - 1 ? letter : `${letter}, ` }}
       </span>
     </div>
   </div>

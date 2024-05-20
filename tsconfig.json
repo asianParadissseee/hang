@@ -16,23 +16,8 @@
     "useDefineForClassFields": true,
     "baseUrl": ".",
     "paths": {
-      "@/app": [
-        "./src/app"
-      ],
-      "@/pages": [
-        "./src/pages"
-      ],
-      "@/widgets": [
-        "./src/widgets"
-      ],
-      "@/features": [
-        "./src/features"
-      ],
-      "@/entity": [
-        "./src/entity"
-      ],
-      "@/shared": [
-        "./src/shared"
+      "@/*": [
+        "./src/*"
       ]
     }
   },

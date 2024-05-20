@@ -9,7 +9,7 @@ const {wrongLetters} = defineProps<GameErrorProps>()
 </script>
 
 <template>
-  <div v-if="wrongLetters.length" class="absolute top-0 top-32 right-96 flex flex-col text-right">
+  <div v-if="wrongLetters.length" class="absolute top-0  right-96 flex flex-col text-right">
     <div>
       <p>Ошибки</p>
       <span v-for="(letter,id) in wrongLetters" :key="id">

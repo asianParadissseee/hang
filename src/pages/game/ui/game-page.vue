@@ -1,6 +1,6 @@
 <template>
   <main>
-    <section class="px-20 w-2/3  relative m-auto min-height-96">
+    <section class="px-20 w-2/3 flex  items-center relative m-auto min-height-96">
       <game-figure :wrong-letters-count="wrongLetters.length"/>
       <game-errors :wrong-letters="wrongLetters"/>
       <game-word :word="word" :correct-letters="correctLetters"/>

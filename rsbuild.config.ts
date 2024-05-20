@@ -4,7 +4,7 @@ import {pluginVue} from '@rsbuild/plugin-vue';
 export default defineConfig({
     plugins: [pluginVue()],
     source: {
-        alias(config, utils) {
+        alias() {
             return {
                 "@/app": './src/app',
                 "@/pages": './src/pages',

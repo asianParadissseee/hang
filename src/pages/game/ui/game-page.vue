@@ -1,38 +1,64 @@
 <template>
   <main>
     <section class="px-20 w-2/3  relative m-auto min-height-96">
-      <game-figure/>
+      <game-figure :wrong-letters-count="wrongLetters.length"/>
       <game-errors :wrong-letters="wrongLetters"/>
       <game-word :word="word" :correct-letters="correctLetters"/>
     </section>
-    <game-popup v-if="false"/>
+    <game-popup ref="popup" :word="word" @restart="restart"/>
     <game-notification ref="notification"/>
   </main>
 </template>
 
 <script setup lang="ts">
+import {ref, watch} from "vue";
 import {GameNotification} from "@/widgets/notification";
 import {GamePopup} from "@/widgets/popup";
 import {GameFigure} from "@/entity/figure";
 import {GameErrors} from "@/entity/errors";
 import {GameWord} from "@/entity/word";
-import {computed, ref} from "vue";
+import {useRandomWord} from "@/shared/composables/useRandomWord";
+import {useLetters} from "@/shared/composables/useLetters";
+import {useNotification} from "@/shared/composables/useNotification";
 
-const word = ref('василий')
-const letters = ref<string[]>([])
-const correctLetters = computed(() => letters.value.filter(letter => word.value.includes(letter)))
-const wrongLetters = computed(() => letters.value.filter(letter => !word.value.includes(letter)))
-const notification = ref<InstanceType<typeof GameNotification> | null>(null)
+const {word, getRandomWord} = useRandomWord()
+const {
+  letters,
+  correctLetters,
+  wrongLetters,
+  isStatusWin,
+  isStatusLose,
+  addLetter,
+  resetLetters
+} = useLetters(word)
+const {showNotification, notification} = useNotification()
+const popup = ref<InstanceType<typeof GamePopup> | null>(null)
 
+
+const restart = async () => {
+  await getRandomWord()
+  resetLetters()
+  popup.value?.toggleClosePopup()
+}
+
+watch(wrongLetters, () => {
+  if (isStatusLose.value) {
+    popup.value?.toggleOpenPopup('lose')
+  }
+})
+watch(correctLetters, () => {
+  if (isStatusWin.value) {
+    popup.value?.toggleOpenPopup('win')
+  }
+})
 window.addEventListener('keydown', ({key}: { key: string }) => {
-  if (letters.value.includes(key)) {
-    notification.value?.toggleOpenNotification()
-    setTimeout(() => notification.value?.toggleCloseNotification(), 2000)
+  if (isStatusLose.value || isStatusWin.value) {
     return;
   }
-  if (/[а-яА-Яеё]/.test(key)) {
-    letters.value.push(key.toLowerCase())
+  if (letters.value.includes(key)) {
+    showNotification()
   }
+  addLetter(key)
 })
 </script>
 
